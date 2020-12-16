@@ -3,6 +3,7 @@
     internal enum TokenClass
     {
         ValueToken,
+        GroupToken,
         ConditionToken,
     }
 }

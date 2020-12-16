@@ -1,12 +1,8 @@
 ﻿namespace NMS.Leo.Typed.Core.Correct.Token
 {
-    internal interface IValueToken
+    internal interface IValueToken : IToken
     {
         CorrectValueOps Ops { get; }
-
-        string TokenName { get; }
-
-        TokenClass TokenClass { get; }
 
         bool MutuallyExclusive { get; }
 
