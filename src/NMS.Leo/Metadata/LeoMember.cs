@@ -94,10 +94,14 @@ namespace NMS.Leo.Metadata
                 info.IsStatic, false, false, false,
                 isNew, false, info.IsInitOnly);
         }
-        
+
         public static implicit operator LeoMember(PropertyInfo info)
         {
-            var (isAsync, isStatic, isAbstract, isVirtual, isNew, isOverride) = info.CanRead ? GetMethodInfo(info.GetGetMethod()) : GetMethodInfo(info.GetSetMethod());
+            var (isAsync, isStatic, isAbstract, isVirtual, isNew, isOverride) =
+                info.CanRead
+                    ? GetMethodInfo(info.GetGetMethod())
+                    : GetMethodInfo(info.GetSetMethod());
+
             return new LeoMember(
                 info.CanWrite,
                 info.CanRead,
@@ -112,7 +116,7 @@ namespace NMS.Leo.Metadata
                 isOverride,
                 false);
         }
-        
+
         public static implicit operator LeoMember(MethodInfo info)
         {
             var (isAsync, isStatic, isAbstract, isVirtual, isNew, isOverride) = GetMethodInfo(info);
@@ -130,7 +134,7 @@ namespace NMS.Leo.Metadata
                 isOverride,
                 false);
         }
-        
+
         public static (bool isAsync,
             bool isStatic,
             bool isAbstract,
@@ -139,13 +143,13 @@ namespace NMS.Leo.Metadata
             bool isOverride
             ) GetMethodInfo(MethodInfo info)
         {
-            var isAsync = info.GetCustomAttribute(typeof(AsyncStateMachineAttribute)) != null;
-            bool isStatic = info.IsStatic;
+            var isAsync = info?.GetCustomAttribute(typeof(AsyncStateMachineAttribute)) != null;
+            bool isStatic = info?.IsStatic ?? false;
             bool isAbstract = false;
             bool isVirtual = false;
             bool isNew = false;
             bool isOverride = false;
-            if (!info.DeclaringType.IsInterface && !isStatic)
+            if (info is not null && !info.DeclaringType.IsInterface && !isStatic)
             {
                 //如果没有被重写
                 if (info.Equals(info.GetBaseDefinition()))
