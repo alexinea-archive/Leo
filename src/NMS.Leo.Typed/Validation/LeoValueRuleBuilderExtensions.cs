@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using NMS.Leo.Typed.Core.Correct;
 using NMS.Leo.Typed.Core.Correct.Token;
+using NMS.Leo.Typed.Core.Correct.Token.ValueTokens;
 using NMS.Leo.Typed.Core.Members;
 
 namespace NMS.Leo.Typed.Validation
@@ -184,6 +185,22 @@ namespace NMS.Leo.Typed.Validation
                 }
             }
 
+            return builder;
+        }
+
+        #endregion
+
+        #region ForItems
+
+        public static ILeoValueRuleBuilder<T, TVal> ForItems<T, TVal, TItem>(this ILeoValueRuleBuilder<T, TVal> builder)
+            where TVal : IEnumerable<TItem>
+        {
+            var current = builder._impl();
+            // var maker = new ILeoValueItemRuleBuilder<T, TVal, TItem>(current);
+            // Func<ILeoValueItemRuleBuilder<T, TVal, TItem>, ILeoValueItemRuleBuilder<T, TVal, TItem>>
+            // var groupToken = maker.Build();
+            
+            // make groupToken as valueToken
             return builder;
         }
 

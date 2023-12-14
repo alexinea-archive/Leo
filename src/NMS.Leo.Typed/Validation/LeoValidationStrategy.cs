@@ -12,7 +12,7 @@ namespace NMS.Leo.Typed.Validation
     public abstract class LeoValidationStrategy : ILeoValidationStrategy, ICorrectStrategy
     {
         private readonly List<CorrectValueRuleBuilder> _memberValueRuleBuilders;
-        private readonly object _builderLockObj = new object();
+        private readonly object _builderLockObj = new();
         private readonly MemberHandler _handler;
 
         protected LeoValidationStrategy(Type type)
@@ -66,7 +66,7 @@ namespace NMS.Leo.Typed.Validation
     public abstract class LeoValidationStrategy<T> : ILeoValidationStrategy<T>, ICorrectStrategy<T>
     {
         private readonly List<CorrectValueRuleBuilder<T>> _memberValueRuleBuilders;
-        private readonly object _builderLockObj = new object();
+        private readonly object _builderLockObj = new();
         private readonly MemberHandler _handler;
 
         protected LeoValidationStrategy()

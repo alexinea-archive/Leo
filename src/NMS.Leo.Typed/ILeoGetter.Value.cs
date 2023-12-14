@@ -7,14 +7,14 @@
         object HostedInstance { get; }
     }
 
-    public interface ILeoValueGetter<T>
+    public interface ILeoValueGetter<out T>
     {
         object Value { get; }
 
         T HostedInstance { get; }
     }
 
-    public interface ILeoValueGetter<T, TVal>
+    public interface ILeoValueGetter<out T, out TVal>
     {
         TVal Value { get; }
 

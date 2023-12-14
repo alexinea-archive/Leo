@@ -194,7 +194,6 @@ namespace NMS.Leo.Builder
                 body.Append($@"public override void SetObjInstance(object obj){{ }}");
             }
 
-
             var tempClass = NClass.UseDomain(type.GetDomain())
                                  .Public()
                                  .Using(type)

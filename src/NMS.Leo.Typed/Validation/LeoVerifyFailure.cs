@@ -34,7 +34,7 @@ namespace NMS.Leo.Typed.Validation
         /// The verified value
         /// </summary>
         public object VerifiedValue { get; set; }
-        
+
         /// <summary>
         /// Error details
         /// </summary>
@@ -55,7 +55,7 @@ namespace NMS.Leo.Typed.Validation
 
             builder.Append(ErrorMessage);
 
-            if (Details != null && Details.Any())
+            if (Details is not null && Details.Any())
             {
                 builder.AppendLine();
                 builder.AppendLine("Detail(s):");
@@ -70,12 +70,12 @@ namespace NMS.Leo.Typed.Validation
 
         public static LeoVerifyFailure Create(string propertyName, string errorMessage)
         {
-            return new LeoVerifyFailure(propertyName, errorMessage);
+            return new(propertyName, errorMessage);
         }
 
         public static LeoVerifyFailure Create(string propertyName, string errorMessage, object verifiedValue)
         {
-            return new LeoVerifyFailure(propertyName, errorMessage, verifiedValue);
+            return new(propertyName, errorMessage, verifiedValue);
         }
     }
 }
