@@ -38,8 +38,6 @@ namespace NMS.Leo.Typed.Core.Correct
 
         public IEnumerable<CorrectVerifyVal> ValidValue(MemberHandler handler)
         {
-            handler.GetValueObject(Name);
-
             return Tokens.Select(token => token.ValidValue(handler.GetValueObject(Name)));
         }
 

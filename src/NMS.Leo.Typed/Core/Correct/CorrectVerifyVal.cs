@@ -10,6 +10,6 @@
 
         public string ErrorMessage { get; set; }
 
-        public static CorrectVerifyVal Success => new CorrectVerifyVal {IsSuccess = true};
+        public static CorrectVerifyVal Success => new() {IsSuccess = true};
     }
 }

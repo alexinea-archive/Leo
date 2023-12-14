@@ -13,7 +13,7 @@ namespace NMS.Leo.Typed.Core.Correct
     {
         private readonly ICoreVisitor _visitor;
         protected readonly List<CorrectValueRule> _correctValueRules;
-        protected readonly object _valueRuleLockObj = new object();
+        protected readonly object _valueRuleLockObj = new ();
 
         protected CorrectContext(bool strictMode)
         {
